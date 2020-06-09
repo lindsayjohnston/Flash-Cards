@@ -16,6 +16,11 @@ body{
     margin: 0;
     min-width: 600px;
 }
+/* UTILITY CLASSES */
+
+.hidden{
+    display: none;
+}
 
 /* NAV BAR */
 nav{
@@ -49,6 +54,9 @@ header{
 }
 h2{
     margin: 0;
+}
+input{
+    max-width: 200px;
 }
 #sign-in{
      display: flex;
