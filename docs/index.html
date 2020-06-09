@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Flash Cards</title>
+</head>
+
+<body>
+    <nav>
+        <div id='user-type-display'>User Type:</div>
+        <div id='current-user-display'>Current User:</div>
+    </nav>
+    <section id='sign-in'>
+        <header>
+            <h2>Sign in to start Flash Cards</h2>
+            <button>Create an account</button>
+        </header>
+        <form id="new-account">
+            <label for="username-init">Username:</label>
+            <input type="text" id="username-init">
+            <label for="password-init">Password:</label>
+            <input type="password" id="password-init">
+            <label for="password-check">Re-enter Password:</label>
+            <input type="password" id="password-check">
+        </form>
+        <form id="existing-account">
+            <input type="radio" name='account-type' id="student" value='student'>
+            <label for="student">Student</label>
+            <input type="radio" name='account-type' id="admin" value='admin'>
+            <label for="admin">Admin</label>
+            <label for="username">Username:</label>
+            <input type="text" id="username">
+            <label for="password">Password:</label>
+            <input type="password" id="password">
+
+
+        </form>
+    </section>
+    <section id='main'>
+        <div id="character">
+            <h1>Character</h1>
+        </div>
+        <div id="activity">
+            <h1>Activity</h1>
+        </div>
+    </section>
+</body>
+
+</html>

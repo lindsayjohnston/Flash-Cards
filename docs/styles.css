@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,900;1,300;1,700&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color: rgb(92, 197, 232);
+    --light-color: white;
+    --dark-color: rgb(64, 67, 70);
+}
+
+body{
+    background-color: var(--primary-color);
+    margin: 0;
+    min-width: 600px;
+}
+
+/* NAV BAR */
+nav{
+    height: 40px;
+    padding: 5px;
+    background-color: var(--light-color);
+    display: flex;
+}
+nav div{
+    width: 50%;  
+}
+
+/* MAIN SECTION */
+#main{
+    padding: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#main div{
+    
+    min-width: 350px;
+    text-align: center;
+}
+
+/* SIGN IN SECTION */
+
+header{
+    text-align: center;
+}
+h2{
+    margin: 0;
+}
+#sign-in{
+     display: flex;
+     flex-direction: column;
+     margin: 20px;
+ }
+
+ form{
+     display: flex;
+     flex-direction: column;
+     padding: 5px;
+ }
+/* NEW ACCOUNT */
+ #new-account{
+     background-color: pink;
+ }
+/* EXISTING ACCOUNT */
+ #existing-account{
+     background-color: lightgreen;
+ }
