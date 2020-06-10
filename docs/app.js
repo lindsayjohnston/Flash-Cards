@@ -107,6 +107,7 @@ function displayUserDashboard(userObject){
 
 function displayAdminDashboard(){
     ui.showElement(activityDiv);
+    $("#activity").load("add-this.txt #vocab-list");
 }
 
 function displayStudentDashboard(){

@@ -52,6 +52,10 @@ nav div p{
     margin: 0px 5px 0px 0px;
 }
 
+#sign-out{
+    cursor: pointer;
+}
+
 /* MAIN SECTION */
 #main{
     padding: 5px;
