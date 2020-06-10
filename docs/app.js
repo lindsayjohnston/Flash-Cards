@@ -44,16 +44,47 @@ const newPassword = document.getElementById('password-init');
 const checkedPassword = document.getElementById('password-check');
 const userNameTakenArea = document.getElementById('username-taken');
 let userNamePass = false;
-// let passwordPass = false;
 const passwordMatchArea = document.getElementById('password-match');
+const userName=document.getElementById('username');
+const password=document.getElementById('password');
+let userIndex;
+const signInHeader=document.getElementById('header');
 
 //EVENT LISTENERS
 document.getElementById("create-btn").addEventListener('click', createNewUserForm);
 newAccountForm.addEventListener("submit", addNewUser);
 newUserName.addEventListener('keyup', checkUserName);
 checkedPassword.addEventListener('keyup', checkPassword);
+signInForm.addEventListener('submit', signInUser);
 
 //FUNCTIONS
+function displayUserDashboard(){
+    ui.hideElement(signInHeader);
+}
+
+function signInUser(event){
+    let userNameExists= false;
+    let passwordMatches= false;
+    let users=JSON.parse(localStorage.getItem('users'));
+    users.forEach(function(user, index){
+        if(username.value === user.username){
+            userNameExists= true;
+            userIndex=index;
+        }
+    })
+    if(userNameExists){
+        if(password.value === users[userIndex].password){
+            ui.hideElement(signInForm);
+            ui.showAlert("You have signed in!" , 'success');
+            displayUserDashboard();
+        } else{
+            ui.showAlert("Incorrect password", 'fail');
+        }
+    } else{
+        ui.showAlert("Username does not exist", 'fail');
+    }
+    event.preventDefault();
+}
 
 function createNewUserForm(){
     ui.showElement(newAccountForm);

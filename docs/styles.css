@@ -26,6 +26,11 @@ body{
     background-color: green;
     color: var(--light-color);
 }
+
+.fail{
+    background-color: red;
+    color: var(--light-color);
+}
 /* NAV BAR */
 nav{
     height: 40px;
