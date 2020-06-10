@@ -19,7 +19,14 @@ class UI {
         setTimeout(function(){
             div.remove();
         }, 4000);
+    }
 
+    showElement(element) {
+        element.classList.remove("hidden");
+    }
+
+    hideElement(element){
+        element.classList.add("hidden");
     }
     
 }
@@ -41,16 +48,16 @@ let userNamePass = false;
 const passwordMatchArea = document.getElementById('password-match');
 
 //EVENT LISTENERS
-document.getElementById("create-btn").addEventListener('click', showSignUp)
+document.getElementById("create-btn").addEventListener('click', createNewUserForm);
 newAccountForm.addEventListener("submit", addNewUser);
 newUserName.addEventListener('keyup', checkUserName);
 checkedPassword.addEventListener('keyup', checkPassword);
 
 //FUNCTIONS
 
-function showSignUp() {
-    signInForm.classList.add("hidden");
-    newAccountForm.classList.remove("hidden");
+function createNewUserForm(){
+    ui.showElement(newAccountForm);
+    ui.hideElement(signInForm);
 }
 
 function checkUserName() {
@@ -95,10 +102,11 @@ function addNewUser(event) {
             newUserName.value = '';
             newPassword.value = '';
             checkedPassword.value = '';
+            ui.hideElement(newAccountForm);
             ui.showAlert('New User Created!', "success");
+            ui.showElement(signInForm);
         }
     }
-
     event.preventDefault();
 }
 
