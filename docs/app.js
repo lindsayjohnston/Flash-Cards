@@ -28,7 +28,11 @@ class UI {
     hideElement(element){
         element.classList.add("hidden");
     }
-    
+
+    navDisplay(userObject){
+        userTypeDisplayArea.textContent='FIX THIS';
+        currentUserDisplayArea.textContent= userObject.username;
+    }
 }
 
 
@@ -49,6 +53,8 @@ const userName=document.getElementById('username');
 const password=document.getElementById('password');
 let userIndex;
 const signInHeader=document.getElementById('header');
+const userTypeDisplayArea= document.getElementById('user-type-display');
+const currentUserDisplayArea=document.getElementById('current-user-display');
 
 //EVENT LISTENERS
 document.getElementById("create-btn").addEventListener('click', createNewUserForm);
@@ -58,8 +64,10 @@ checkedPassword.addEventListener('keyup', checkPassword);
 signInForm.addEventListener('submit', signInUser);
 
 //FUNCTIONS
-function displayUserDashboard(){
+function displayUserDashboard(userObject){
+    console.log(userObject);
     ui.hideElement(signInHeader);
+    ui.navDisplay(userObject);
 }
 
 function signInUser(event){
@@ -76,7 +84,7 @@ function signInUser(event){
         if(password.value === users[userIndex].password){
             ui.hideElement(signInForm);
             ui.showAlert("You have signed in!" , 'success');
-            displayUserDashboard();
+            displayUserDashboard(users[userIndex]);
         } else{
             ui.showAlert("Incorrect password", 'fail');
         }
