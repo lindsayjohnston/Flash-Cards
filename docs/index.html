@@ -13,7 +13,7 @@
     <nav>
         <div>
             <p>User Type:</p>
-            <p id='user-type-display'>USER TYPE</p>
+            <p id='user-type-display'></p>
         </div>
         <div>
             <p>Current User:</p>
@@ -29,6 +29,16 @@
             <button id="create-or-sign-in">Create an account</button>
         </header>
         <form id="new-account" class="hidden">
+            <div class="radio">
+                <input type="radio" name='account-type' id="new-student-radio" value='student'>
+                <label for="student">Student</label>
+                <input type="radio" name='account-type' id="new-admin-radio" value='admin'>
+                <label for="admin">Admin</label>
+            </div>
+            <div id="admin-code-area" class='hidden'>
+                <label for="admin-code">Admin code:</label>
+                <input type="password" id="admin-code-input">
+            </div>
             <label for="username-init">Username:</label>
             <div>
                 <input type="text" id="username-init">
@@ -44,12 +54,6 @@
             <input type="submit">
         </form>
         <form id="existing-account">
-            <div class="radio">
-                <input type="radio" name='account-type' id="student" value='student'>
-                <label for="student">Student</label>
-                <input type="radio" name='account-type' id="admin" value='admin'>
-                <label for="admin">Admin</label>
-            </div>
             <label for="username">Username:</label>
             <input type="text" id="username">
             <label for="password">Password:</label>
