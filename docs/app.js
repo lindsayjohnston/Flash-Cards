@@ -1,4 +1,5 @@
 
+
 class User {
     constructor(username, password) {
         this.username = username;
@@ -7,13 +8,28 @@ class User {
 }
 
 class UI {
+    showAlert(message, className){
+        const div= document.createElement('div');
+        div.className=`alert ${className}`;
+        div.appendChild(document.createTextNode(message));
+        const body= document.querySelector('body');
+        const main= document.querySelector('#main');
+        body.insertBefore(div , main);
+        $('.alert').delay(3000).fadeOut(); 
+        setTimeout(function(){
+            div.remove();
+        }, 4000);
 
+    }
+    
 }
+
 
 class Storage {
 
 }
 //VARIABLES
+const ui= new UI;
 const newAccountForm = document.getElementById("new-account");
 const signInForm = document.getElementById('existing-account');
 const newUserName = document.getElementById('username-init');
@@ -53,6 +69,9 @@ function checkUserName() {
             userNameTakenArea.textContent = "Username available."
             return true;
         }
+    } else {
+        userNameTakenArea.textContent = "Username available."
+        return true;
     }
 }
 
@@ -76,7 +95,7 @@ function addNewUser(event) {
             newUserName.value = '';
             newPassword.value = '';
             checkedPassword.value = '';
-
+            ui.showAlert('New User Created!', "success");
         }
     }
 

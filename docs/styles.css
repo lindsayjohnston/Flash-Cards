@@ -22,6 +22,10 @@ body{
     display: none;
 }
 
+.success{
+    background-color: green;
+    color: var(--light-color);
+}
 /* NAV BAR */
 nav{
     height: 40px;
