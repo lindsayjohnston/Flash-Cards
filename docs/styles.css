@@ -41,9 +41,9 @@ nav{
     padding: 5px;
     background-color: var(--light-color);
     display: flex;
+    justify-content: space-between;
 }
-nav div{
-    width: 50%;  
+nav div{ 
     display: flex;
     flex-direction: row;
 }

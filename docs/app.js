@@ -55,17 +55,29 @@ let userIndex;
 const signInHeader=document.getElementById('header');
 const userTypeDisplayArea= document.getElementById('user-type-display');
 const currentUserDisplayArea=document.getElementById('current-user-display');
+const signOutBtn=document.getElementById('sign-out');
+const createSignInBtn=document.getElementById("create-or-sign-in");
 
 //EVENT LISTENERS
-document.getElementById("create-btn").addEventListener('click', createNewUserForm);
+createSignInBtn.addEventListener('click', newUserOrSignIn);
 newAccountForm.addEventListener("submit", addNewUser);
 newUserName.addEventListener('keyup', checkUserName);
 checkedPassword.addEventListener('keyup', checkPassword);
 signInForm.addEventListener('submit', signInUser);
+signOutBtn.addEventListener('click', signOut);
 
 //FUNCTIONS
+function signOut(){
+    if(localStorage.getItem('current-user') !== 'none'){
+        localStorage.setItem('current-user', 'none');
+    currentUserDisplayArea.textContent='';
+    ui.showElement(signInHeader);
+    ui.showElement(signInForm);
+    ui.showAlert("You have signed out", "success");
+    }
+}
+
 function displayUserDashboard(userObject){
-    console.log(userObject);
     ui.hideElement(signInHeader);
     ui.navDisplay(userObject);
 }
@@ -73,30 +85,46 @@ function displayUserDashboard(userObject){
 function signInUser(event){
     let userNameExists= false;
     let passwordMatches= false;
-    let users=JSON.parse(localStorage.getItem('users'));
-    users.forEach(function(user, index){
-        if(username.value === user.username){
-            userNameExists= true;
-            userIndex=index;
-        }
-    })
-    if(userNameExists){
-        if(password.value === users[userIndex].password){
-            ui.hideElement(signInForm);
-            ui.showAlert("You have signed in!" , 'success');
-            displayUserDashboard(users[userIndex]);
+    if (JSON.parse(localStorage.getItem('users')) === null){
+        ui.showAlert("Create an account!", 'fail');
+    } else {
+        let users=JSON.parse(localStorage.getItem('users'));
+        users.forEach(function(user, index){
+            if(username.value === user.username){
+                userNameExists= true;
+                userIndex=index;
+            }
+        })
+        if(userNameExists){
+            if(password.value === users[userIndex].password){
+                localStorage.setItem('current-user', users[userIndex].username);
+                ui.hideElement(signInForm);
+                ui.showAlert("You have signed in!" , 'success');
+                displayUserDashboard(users[userIndex]);
+            } else{
+                ui.showAlert("Incorrect password", 'fail');
+            }
         } else{
-            ui.showAlert("Incorrect password", 'fail');
+            ui.showAlert("Username does not exist", 'fail');
         }
-    } else{
-        ui.showAlert("Username does not exist", 'fail');
     }
+    userName.value='';
+    password.value='';
+
     event.preventDefault();
 }
 
-function createNewUserForm(){
-    ui.showElement(newAccountForm);
-    ui.hideElement(signInForm);
+function newUserOrSignIn(e){
+    if(e.target.textContent=== "Create an account"){
+        ui.showElement(newAccountForm);
+        ui.hideElement(signInForm);
+        e.target.textContent= "Sign in to existing account";
+    } else if(e.target.textContent=== "Sign in to existing account"){
+        ui.showElement(signInForm);
+        ui.hideElement(newAccountForm);
+        e.target.textContent= "Create an account";
+    };
+    
 }
 
 function checkUserName() {
@@ -159,3 +187,4 @@ function storeNewUser(user) {
     users.push(user);
     localStorage.setItem('users', JSON.stringify(users));
 }
+
