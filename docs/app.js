@@ -60,6 +60,8 @@ const signOutBtn=document.getElementById('sign-out');
 const createSignInBtn=document.getElementById("create-or-sign-in");
 const adminRadioButton=document.getElementById("new-admin-radio");
 const studentRadioButton=document.getElementById('new-student-radio');
+const characterDiv=document.getElementById('character');
+const activityDiv=document.getElementById('activity');
 //EVENT LISTENERS
 createSignInBtn.addEventListener('click', newUserOrSignIn);
 newAccountForm.addEventListener("submit", addNewUser);
@@ -69,6 +71,7 @@ signInForm.addEventListener('submit', signInUser);
 signOutBtn.addEventListener('click', signOut);
 adminRadioButton.addEventListener('click', displayAdminCode);
 studentRadioButton.addEventListener('click', hideAdminCode);
+
 
 //FUNCTIONS
 function displayAdminCode(){
@@ -87,12 +90,28 @@ function signOut(){
     ui.showElement(signInHeader);
     ui.showElement(signInForm);
     ui.showAlert("You have signed out", "success");
+    ui.hideElement(activityDiv);
+    ui.hideElement(characterDiv);
     }
 }
 
 function displayUserDashboard(userObject){
     ui.hideElement(signInHeader);
     ui.navDisplay(userObject);
+    if(userObject.userType==='admin'){
+        displayAdminDashboard();
+    } else if(userObject.userType === 'student'){
+        displayStudentDashboard();
+    }
+}
+
+function displayAdminDashboard(){
+    ui.showElement(activityDiv);
+}
+
+function displayStudentDashboard(){
+    ui.showElement(characterDiv);
+    ui.showElement(activityDiv);
 }
 
 function signInUser(event){
