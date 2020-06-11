@@ -129,7 +129,8 @@ function getNewFlashCards(){
     let listObject= JSON.parse(localStorage.getItem('list-Object'));
     let randomIndex= getRandomInt(listObject.length);
     termDisplayArea.textContent= listObject[randomIndex][0];
-    definitionDisplayText.textContent=listObject[randomIndex][1];
+    definitionDisplayText.textContent='';
+    $("#definition-display-text").fadeOut("slow");
     currentDefinition=listObject[randomIndex][1];
 }
 
@@ -138,9 +139,8 @@ function getRandomInt(arrayLength){
 }
 
 function revealDefinition(){
-    console.log(123)
+    definitionDisplayText.textContent=currentDefinition;
     $("#term-display").animate({left: "210px"}, "fast");
-    
     $("#term-display").animate({left: "0px"}, "slow");
     $("#definition-display-text").delay(200).fadeIn("slow");
     

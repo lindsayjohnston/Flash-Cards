@@ -125,7 +125,6 @@ input{
  }
  #flashcard-display{
     position: relative;
-    border-style: solid;
     width: 600px;
     height: 100px;
  } 
