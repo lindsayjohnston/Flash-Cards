@@ -14,7 +14,7 @@
 body{
     background-color: var(--primary-color);
     margin: 0;
-    min-width: 600px;
+    min-width: 800px;
 }
 
 p{
@@ -107,4 +107,35 @@ input{
      height: 600px;
      display: flex;
      flex-direction: column;
+ }
+
+ /* STUDENT DASHBOARD */
+ /* #flashcard-display{
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-evenly;
+ } */
+ .flashcard{
+    width: 200px;
+    height: 100px;
+    background-color: lightsalmon;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ #flashcard-display{
+    position: relative;
+    border-style: solid;
+    width: 600px;
+    height: 100px;
+ } 
+ 
+
+ #term-display{
+     position: absolute;
+ }
+
+ #definition-display{
+     position: absolute;
+     left: 400px;
  }

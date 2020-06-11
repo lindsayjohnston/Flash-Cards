@@ -80,9 +80,11 @@ let listObject;
 const listDisplayArea = document.getElementById('display-list');
 const listTable = document.getElementById('list-table');
 const flashCardArea=document.getElementById('flashcard-area');
-const startFlashCardsButton= document.getElementById('start-flashcards');
+const getFlashCardsButton= document.getElementById('start-flashcards');
 const termDisplayArea=document.getElementById('term-display');
 const definitionDisplayArea=document.getElementById('definition-display');
+let currentDefinition;
+const termFlashCard= document.getElementById('term-display');
 //EVENT LISTENERS
 createSignInBtn.addEventListener('click', newUserOrSignIn);
 newAccountForm.addEventListener("submit", addNewUser);
@@ -93,7 +95,8 @@ signOutBtn.addEventListener('click', signOut);
 adminRadioButton.addEventListener('click', displayAdminCode);
 studentRadioButton.addEventListener('click', hideAdminCode);
 uploadButton.addEventListener('click', uploadList);
-startFlashCardsButton.addEventListener('click', displayNewFlashCards);
+getFlashCardsButton.addEventListener('click', getNewFlashCards);
+termFlashCard.addEventListener('click' , revealDefinition);
 //FUNCTIONS
 
 ///DASHBOARDS
@@ -120,17 +123,24 @@ function displayStudentDashboard() {
 
 //STUDENT FUNCTIONS
 
-function displayNewFlashCards(){
+function getNewFlashCards(){
     let listObject= JSON.parse(localStorage.getItem('list-Object'));
     let randomIndex= getRandomInt(listObject.length);
     termDisplayArea.textContent= listObject[randomIndex][0];
-    definitionDisplayArea.textContent=listObject[randomIndex][1];
+    currentDefinition=listObject[randomIndex][1];
 }
 
 function getRandomInt(arrayLength){
     return Math.floor(Math.random() * arrayLength);
 }
 
+function revealDefinition(){
+    console.log(123)
+    $("#term-display").animate({left: "210px"}, "fast");
+    $("#definition-display").text(currentDefinition);
+    $("#term-display").animate({left: "0px"}, "fast");
+    
+}
 
 
 //ADMIN FUNCTIONS
