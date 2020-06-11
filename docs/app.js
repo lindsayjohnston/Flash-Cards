@@ -1,4 +1,16 @@
+/////////////////TEST
+const doSomethingButton=document.getElementById('do-something');
+doSomethingButton.addEventListener('click', doSomething);
+var vocabFileObject=document.getElementById('vocab-file');
 
+function doSomething(){
+    
+    console.log(vocabFileObject.files[0]);
+}
+
+
+
+///////////////////////////
 
 class User {
     constructor(username, password, userType) {
