@@ -83,8 +83,10 @@ const flashCardArea=document.getElementById('flashcard-area');
 const getFlashCardsButton= document.getElementById('start-flashcards');
 const termDisplayArea=document.getElementById('term-display');
 const definitionDisplayArea=document.getElementById('definition-display');
+const definitionDisplayText=document.getElementById('definition-display-text');
 let currentDefinition;
 const termFlashCard= document.getElementById('term-display');
+
 //EVENT LISTENERS
 createSignInBtn.addEventListener('click', newUserOrSignIn);
 newAccountForm.addEventListener("submit", addNewUser);
@@ -127,6 +129,7 @@ function getNewFlashCards(){
     let listObject= JSON.parse(localStorage.getItem('list-Object'));
     let randomIndex= getRandomInt(listObject.length);
     termDisplayArea.textContent= listObject[randomIndex][0];
+    definitionDisplayText.textContent=listObject[randomIndex][1];
     currentDefinition=listObject[randomIndex][1];
 }
 
@@ -137,8 +140,9 @@ function getRandomInt(arrayLength){
 function revealDefinition(){
     console.log(123)
     $("#term-display").animate({left: "210px"}, "fast");
-    $("#definition-display").text(currentDefinition);
-    $("#term-display").animate({left: "0px"}, "fast");
+    
+    $("#term-display").animate({left: "0px"}, "slow");
+    $("#definition-display-text").delay(200).fadeIn("slow");
     
 }
 
