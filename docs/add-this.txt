@@ -1,7 +1,1 @@
-<form id='vocab-list'>
-    <label for="vocab-list">Enter Vocab List Below</label>
-    <div id="vocab-inputs">
-        <input id="term-input" type="text">
-        <input id="definition-input" type="text">
-    </div>
-</form>
+

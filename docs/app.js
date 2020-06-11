@@ -1,12 +1,15 @@
 /////////////////TEST
-const doSomethingButton=document.getElementById('do-something');
-doSomethingButton.addEventListener('click', doSomething);
-var vocabFileObject=document.getElementById('vocab-file');
+// const doSomethingButton=document.getElementById('do-something');
+// doSomethingButton.addEventListener('click', doSomething);
+// var vocabFileObject=document.getElementById('vocab-file');
 
-function doSomething(){
-    
-    console.log(vocabFileObject.files[0]);
-}
+// function doSomething(){
+//     Papa.parse(vocabFileObject.files[0], {
+//         complete: function(results) {
+//             console.log(results);
+//         }
+//     });
+// }
 
 
 
@@ -49,9 +52,6 @@ class UI {
 }
 
 
-class Storage {
-
-}
 //VARIABLES
 const ui= new UI;
 const newAccountForm = document.getElementById("new-account");
@@ -74,6 +74,12 @@ const adminRadioButton=document.getElementById("new-admin-radio");
 const studentRadioButton=document.getElementById('new-student-radio');
 const characterDiv=document.getElementById('character');
 const activityDiv=document.getElementById('activity');
+const uploadButton=document.getElementById('upload-button');
+const uploadListDiv=document.getElementById('upload-list');
+let listObject;
+const listDisplayArea=document.getElementById('display-list');
+const listTable=document.getElementById('list-table');
+
 //EVENT LISTENERS
 createSignInBtn.addEventListener('click', newUserOrSignIn);
 newAccountForm.addEventListener("submit", addNewUser);
@@ -83,9 +89,72 @@ signInForm.addEventListener('submit', signInUser);
 signOutBtn.addEventListener('click', signOut);
 adminRadioButton.addEventListener('click', displayAdminCode);
 studentRadioButton.addEventListener('click', hideAdminCode);
-
+uploadButton.addEventListener('click', uploadList);
 
 //FUNCTIONS
+
+///DASHBOARDS
+function displayUserDashboard(userObject){
+    ui.hideElement(signInHeader);
+    ui.navDisplay(userObject);
+    if(userObject.userType==='admin'){
+        displayAdminDashboard();
+    } else if(userObject.userType === 'student'){
+        displayStudentDashboard();
+    }
+}
+
+function displayAdminDashboard(){
+    ui.showElement(activityDiv);
+    ui.showElement(uploadListDiv);
+}
+
+function displayStudentDashboard(){
+    ui.showElement(characterDiv);
+    ui.showElement(activityDiv);
+}
+
+
+//ADMIN FUNCTIONS
+function uploadList(){
+    const listFileObject=document.getElementById('vocab-file');
+    if(listFileObject.files[0] === undefined){
+        ui.showAlert("Add a file", "fail");
+    } else{
+        Papa.parse(listFileObject.files[0], {
+            complete: function(results){
+                localStorage.setItem('list-Object', JSON.stringify(results.data));
+                displayList(results.data);
+            }
+        })
+        
+    }
+}
+
+function displayList(listArrays){
+    ui.showElement(listDisplayArea);
+    
+    if(listArrays === undefined){
+        listArrays= JSON.parse(localStorage.getItem('list-Object'));
+    }
+
+    listArrays.forEach(function(array){
+        let tr= document.createElement('tr');
+        let tdTerm= document.createElement('td');
+        tdTerm.textContent= array[0];
+        let tdDefinition= document.createElement('td');
+        tdDefinition.textContent= array[1];
+        tr.appendChild(tdTerm);
+        tr.appendChild(tdDefinition);
+        listTable.appendChild(tr);
+    })
+
+}
+
+
+
+//SIGN IN FUNCTIONS
+
 function displayAdminCode(){
     ui.showElement(document.getElementById('admin-code-area'));
 }
@@ -105,26 +174,6 @@ function signOut(){
     ui.hideElement(activityDiv);
     ui.hideElement(characterDiv);
     }
-}
-
-function displayUserDashboard(userObject){
-    ui.hideElement(signInHeader);
-    ui.navDisplay(userObject);
-    if(userObject.userType==='admin'){
-        displayAdminDashboard();
-    } else if(userObject.userType === 'student'){
-        displayStudentDashboard();
-    }
-}
-
-function displayAdminDashboard(){
-    ui.showElement(activityDiv);
-    $("#activity").load("add-this.txt #vocab-list");
-}
-
-function displayStudentDashboard(){
-    ui.showElement(characterDiv);
-    ui.showElement(activityDiv);
 }
 
 function signInUser(event){
