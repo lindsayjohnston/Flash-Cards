@@ -132,6 +132,9 @@ function uploadList(){
 }
 
 function displayList(listArrays){
+    while(listTable.childNodes[2]){
+        listTable.childNodes[2].remove();
+    }
     ui.showElement(listDisplayArea);
     
     if(listArrays === undefined){
@@ -140,6 +143,7 @@ function displayList(listArrays){
 
     listArrays.forEach(function(array){
         let tr= document.createElement('tr');
+        tr.className='list-row';
         let tdTerm= document.createElement('td');
         tdTerm.textContent= array[0];
         let tdDefinition= document.createElement('td');
