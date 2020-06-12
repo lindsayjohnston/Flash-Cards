@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,900;1,300;1,700&display=swap');
 
-*{
+* {
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
@@ -20,6 +20,28 @@ body{
 p{
   margin: 0;  
 }
+
+button, .submit-button{
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    -webkit-appearance: none;
+    border-radius: 5px;
+    width: fit-content; 
+    margin: 10px; 
+}
+
+input[type=text],[type=password]{
+    width: 200px;
+    font-size: 1rem;
+    margin: 5px;
+}
+label{
+    padding:0 5px;
+    display: flex;
+    align-items: center;
+
+}
+
 /* UTILITY CLASSES */
 
 .hidden{
@@ -27,13 +49,30 @@ p{
 }
 
 .success{
-    background-color: green;
+    background-color: rgb(98, 151, 98);
     color: var(--light-color);
 }
 
 .fail{
-    background-color: red;
+    background-color: rgb(238, 108, 108);
     color: var(--light-color);
+}
+
+.col{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.row{
+   display:flex;
+   flex-direction: row;
+}
+
+.horizontal-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 /* NAV BAR */
 nav{
@@ -78,30 +117,55 @@ header{
 h2{
     margin: 0;
 }
-input{
-    max-width: 200px;
-}
+
 #sign-in{
      display: flex;
      flex-direction: column;
      margin: 20px;
+     justify-content: center;
+     align-items: center;
+
+ }
+ form{
+     width: fit-content
  }
 
- form{
-     display: flex;
-     flex-direction: column;
-     padding: 5px;
- }
+
 /* NEW ACCOUNT */
  #new-account{
      background-color: pink;
+     width: 500px;
+     padding: 10px 0;
  }
+
+
 /* EXISTING ACCOUNT */
  #existing-account{
      background-color: lightgreen;
+     width: 500px;
+     padding: 10px 0;
+ }
+ #existing-account div{
+     display: flex;
+     flex-direction: column;
  }
 
  /* ADMIN DASHBOARD */
+#choose-file-div{
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+}
+#vocab-file{
+    width: 200px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px 0 20px;
+}
+
  #term-input{
      width: 300px;
      height: 600px;
@@ -109,6 +173,28 @@ input{
      flex-direction: column;
  }
 
+ #upload-list{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+ }
+
+ table{
+     background-color: white;
+ }
+
+ .term{
+    min-width: 100px;
+    text-align: center;
+ }
+
+ .definition{
+     min-width: 200px;
+     text-align: center;
+ }
+
+ 
  /* STUDENT DASHBOARD */
  /* #flashcard-display{
      display: flex;

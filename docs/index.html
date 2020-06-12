@@ -28,39 +28,80 @@
             <h2>Sign in to start Flash Cards</h2>
             <button id="create-or-sign-in">Create an account</button>
         </header>
-        <form id="new-account" class="hidden">
-            <div class="radio">
-                <input type="radio" name='account-type' id="new-student-radio" value='student'>
-                <label for="student">Student</label>
-                <input type="radio" name='account-type' id="new-admin-radio" value='admin'>
-                <label for="admin">Admin</label>
-            </div>
-            <div id="admin-code-area" class='hidden'>
-                <label for="admin-code">Admin code:</label>
-                <input type="password" id="admin-code-input">
-            </div>
-            <label for="username-init">Username:</label>
-            <div>
-                <input type="text" id="username-init">
-                <label id="username-taken"></label>
-            </div>
-            <label for="password-init">Password:</label>
-            <input type="password" id="password-init">
-            <label for="password-check">Re-enter Password:</label>
-            <div>
-                <input type="password" id="password-check">
-                <label id="password-match"></label>
-            </div>
-            <input type="submit">
-        </form>
-        <form id="existing-account">
-            <label for="username">Username:</label>
-            <input type="text" id="username">
-            <label for="password">Password:</label>
-            <input type="password" id="password">
-            <input type="submit" id="sign-in-submit">
+        <div id="new-account" class="hidden">
+            <div class='horizontal-center'>
+                <form class="col">
+                    
+                        <div class="horizontal-center">
+                            <div class="row" >
+                                <input type="radio" name='account-type' id="new-student-radio" value='student'>
+                                <label for="student">Student</label>
+                            </div>
+                            <div class="row">
+                                <input type="radio" name='account-type' id="new-admin-radio" value='admin'>
+                                <label for="admin">Admin</label>
+                            </div>    
 
-        </form>
+                        </div>
+                        
+                    
+                    <div id="admin-code-area" class='hidden'>
+                        <div class="col">
+                            <label for="admin-code">Admin code:</label>
+                            <input type="password" id="admin-code-input">
+        
+                        </div>
+                       
+                    </div>
+                    <div class='col'>
+                        <label for="username-init">Username:</label>
+                        <div class='row'>
+                            <input type="text" id="username-init">
+                            <label id="username-taken"></label>
+                        </div>
+                    </div>
+                    <div class='col'>
+                        <label for="password-init">Password:</label>
+                        <input type="password" id="password-init">
+                    </div>
+                    <div>
+                        <label for="password-check">Re-enter Password:</label>
+                        <div class='row'>
+                            <input type="password" id="password-check">
+                            <label id="password-match"></label>
+                        </div>
+                    </div>
+                    <div class='horizontal-center'>
+                        <input type="submit" class="submit-button">
+                    </div>
+                    
+                </form>
+
+            </div>
+            
+
+        </div>
+        <div id="existing-account">
+            <div class="horizontal-center">
+                <form class='col'>
+                    <div>
+                        <label for="username">Username:</label>
+                        <input type="text" id="username">
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password">
+                    </div>
+                    <div class="horizontal-center">
+                        <input type="submit" id="sign-in-submit" class="submit-button ">
+                    </div>
+                </form>
+
+            </div>
+            
+
+        </div>
+        
     </section>
     <section id='main'>
         <div id="character" class='hidden'>
@@ -70,11 +111,14 @@
             <h1>Activity</h1>
         </div>
     </section>
-<!-- ACTIVITIES -->
+    <!-- ACTIVITIES -->
     <!-- ADMIN -->
-    <div id="upload-list" class='hidden'>
-        <input type="file" id="vocab-file">
-        <button id="upload-button">Upload this list!</button>
+    <div id="upload-list" /*class='hidden'*/>
+        <div id="choose-file-div">
+            <input type="file" name="file" id="vocab-file">
+            <button id="upload-button">Upload this list!</button>
+        </div>
+
         <div id="display-list" class="hidden">
             <table id='list-table'>
                 <tr>
@@ -85,24 +129,23 @@
         </div>
     </div>
     <!-- STUDENT -->
-    <div id="flashcard-area" /*class="hidden"*/>
-        <h3>Study with Flashcards!</h3> 
-        <button id="start-flashcards">Get New Flash Cards</button>
-        <p>Click the term flashcard to reveal the definition</p>
-        <div id="flashcard-display">
-            <div id="term-display" class="flashcard"></div>
-            <div id="definition-display" class="flashcard">
-                <p id="definition-display-text" class="hidden"></p>
-            </div>
+    <div id="flashcard-area" /*class="hidden" * />
+    <h3>Study with Flashcards!</h3>
+    <button id="start-flashcards">Get New Flash Cards</button>
+    <p>Click the term flashcard to reveal the definition</p>
+    <div id="flashcard-display">
+        <div id="term-display" class="flashcard"></div>
+        <div id="definition-display" class="flashcard">
+            <p id="definition-display-text" class="hidden"></p>
         </div>
+    </div>
     </div>
 
 
-<!-- SCRIPTS -->
+    <!-- SCRIPTS -->
     <script src="papaparse.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="app.js"></script>
 </body>
 
 </html>
-

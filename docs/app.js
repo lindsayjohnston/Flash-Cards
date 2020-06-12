@@ -179,8 +179,10 @@ function displayList(listArrays) {
             tr.className = 'list-row';
             let tdTerm = document.createElement('td');
             tdTerm.textContent = array[0];
+            tdTerm.className="term";
             let tdDefinition = document.createElement('td');
             tdDefinition.textContent = array[1];
+            tdDefinition.className='definition';
             tr.appendChild(tdTerm);
             tr.appendChild(tdDefinition);
             listTable.appendChild(tr);
