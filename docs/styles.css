@@ -6,7 +6,8 @@
 }
 
 :root {
-    --primary-color: rgb(92, 197, 232);
+    --primary-color: rgb(66, 89, 152);
+    --secondary-color: rgb(252, 246, 163);
     --light-color: white;
     --dark-color: rgb(64, 67, 70);
 }
@@ -15,6 +16,10 @@ body{
     background-color: var(--primary-color);
     margin: 0;
     min-width: 800px;
+}
+h2, h3{
+    font-weight: unset;
+    color: white;
 }
 
 p{
@@ -43,13 +48,20 @@ label{
 }
 
 /* UTILITY CLASSES */
+.disabled{
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: .65;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
 
 .hidden{
     display: none;
 }
 
 .success{
-    background-color: rgb(98, 151, 98);
+    background-color: rgb(163, 226, 163);
     color: var(--light-color);
 }
 
@@ -74,6 +86,11 @@ label{
     justify-content: center;
     align-items: center;
 }
+
+.alert{
+    margin-top: 30px;
+    color: black;
+}
 /* NAV BAR */
 nav{
     height: 40px;
@@ -95,19 +112,7 @@ nav div p{
     cursor: pointer;
 }
 
-/* MAIN SECTION */
-#main{
-    padding: 5px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
 
-#main div{
-    
-    min-width: 350px;
-    text-align: center;
-}
 
 /* SIGN IN SECTION */
 
@@ -133,7 +138,7 @@ h2{
 
 /* NEW ACCOUNT */
  #new-account{
-     background-color: pink;
+     background-color:var(--secondary-color);
      width: 500px;
      padding: 10px 0;
  }
@@ -141,7 +146,7 @@ h2{
 
 /* EXISTING ACCOUNT */
  #existing-account{
-     background-color: lightgreen;
+     background-color: var(--secondary-color);
      width: 500px;
      padding: 10px 0;
  }
@@ -182,6 +187,20 @@ h2{
 
  table{
      background-color: white;
+     
+ }
+tbody>tr{
+    display: flex;
+    justify-content: space-around;
+}
+ th{
+     font-weight: unset;
+     font-size: 1.5rem;
+ }
+
+ tr{
+     border-bottom: 1px solid grey;
+     display: block;
  }
 
  .term{
@@ -201,6 +220,7 @@ h2{
      flex-direction: column;
      align-items: center;
  }
+
  .flashcard{
     width: 200px;
     height: 100px;
@@ -208,11 +228,13 @@ h2{
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid grey;
  }
  #flashcard-display{
     position: relative;
     width: 600px;
     height: 100px;
+    margin: 20px;
  } 
  
 

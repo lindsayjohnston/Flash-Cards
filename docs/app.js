@@ -1,19 +1,4 @@
-/////////////////TEST
-// const doSomethingButton=document.getElementById('do-something');
-// doSomethingButton.addEventListener('click', doSomething);
-// var vocabFileObject=document.getElementById('vocab-file');
 
-// function doSomething(){
-//     Papa.parse(vocabFileObject.files[0], {
-//         complete: function(results) {
-//             console.log(results);
-//         }
-//     });
-// }
-
-
-
-///////////////////////////
 
 class User {
     constructor(username, password, userType) {
@@ -26,7 +11,7 @@ class User {
 class UI {
     showAlert(message, className) {
         const div = document.createElement('div');
-        div.className = `alert ${className}`;
+        div.className = `horizontal-center alert ${className}`;
         div.appendChild(document.createTextNode(message));
         const body = document.querySelector('body');
         const main = document.querySelector('#main');
@@ -72,8 +57,7 @@ const signOutBtn = document.getElementById('sign-out');
 const createSignInBtn = document.getElementById("create-or-sign-in");
 const adminRadioButton = document.getElementById("new-admin-radio");
 const studentRadioButton = document.getElementById('new-student-radio');
-const characterDiv = document.getElementById('character');
-const activityDiv = document.getElementById('activity');
+
 const uploadButton = document.getElementById('upload-button');
 const uploadListDiv = document.getElementById('upload-list-display');
 let listObject;
@@ -86,6 +70,7 @@ const definitionDisplayArea=document.getElementById('definition-display');
 const definitionDisplayText=document.getElementById('definition-display-text');
 let currentDefinition;
 const termFlashCard= document.getElementById('term-display');
+const vocabFileButton=document.getElementById('vocab-file');
 
 //EVENT LISTENERS
 createSignInBtn.addEventListener('click', newUserOrSignIn);
@@ -99,6 +84,7 @@ studentRadioButton.addEventListener('click', hideAdminCode);
 uploadButton.addEventListener('click', uploadList);
 getFlashCardsButton.addEventListener('click', getNewFlashCards);
 termFlashCard.addEventListener('click' , revealDefinition);
+vocabFileButton.addEventListener('change', revealUploadButton);
 //FUNCTIONS
 
 ///DASHBOARDS
@@ -113,13 +99,12 @@ function displayUserDashboard(userObject) {
 }
 
 function displayAdminDashboard() {
-    ui.showElement(activityDiv);
+    
     ui.showElement(uploadListDiv);
 }
 
 function displayStudentDashboard() {
-    ui.showElement(characterDiv);
-    ui.showElement(activityDiv);
+    
     ui.showElement(flashCardArea);
 }
 
@@ -148,19 +133,29 @@ function revealDefinition(){
 
 
 //ADMIN FUNCTIONS
+function revealUploadButton(){
+    ui.hideElement(listTable);
+    uploadButton.classList.remove("disabled");
+}
 function uploadList() {
+    
     const listFileObject = document.getElementById('vocab-file');
-    if (listFileObject.files[0] === undefined) {
-        ui.showAlert("Add a file", "fail");
-    } else {
+    
         Papa.parse(listFileObject.files[0], {
             complete: function (results) {
+                results.data.forEach(function (array, index){
+                    if(array[0] === ''){
+                        results.data.splice(index, 1);
+                    }
+                })
                 localStorage.setItem('list-Object', JSON.stringify(results.data));
                 displayList(results.data);
             }
         })
-
-    }
+        ui.showElement(listTable);
+        ui.showAlert("List uploaded successfully", "success");
+        uploadButton.classList.add('disabled');
+    
 }
 
 function displayList(listArrays) {
@@ -213,9 +208,8 @@ function signOut() {
         ui.showElement(signInHeader);
         ui.showElement(signInForm);
         ui.showAlert("You have signed out", "success");
-        ui.hideElement(activityDiv);
-        ui.hideElement(characterDiv);
         ui.hideElement(uploadListDiv);
+        ui.hideElement(flashCardArea);
     }
 }
 
@@ -268,12 +262,12 @@ function checkUserName() {
         let taken = false;
         let users = JSON.parse(localStorage.getItem('users'));
         users.forEach(function (user) {
-            if (user.username.indexOf(newUserName.value) !== -1) {
+            if (user.username=== newUserName.value) {
                 taken = true;
             }
         })
         if (taken) {
-            userNameTakenArea.textContent = "Username taken."
+            userNameTakenArea.textContent = "Username not available."
             return false;
         } else {
             userNameTakenArea.textContent = "Username available."
@@ -287,10 +281,10 @@ function checkUserName() {
 
 function checkPassword() {
     if (newPassword.value === checkedPassword.value) {
-        passwordMatchArea.textContent = "Passwords Match";
+        passwordMatchArea.textContent = "Passwords match.";
         return (true);
     } else {
-        passwordMatchArea.textContent = "Passwords Don't Match";
+        passwordMatchArea.textContent = "Passwords don't Match.";
         return (false);
     }
 }
@@ -326,6 +320,8 @@ function addNewUser(event) {
                 newUserName.value = '';
                 newPassword.value = '';
                 checkedPassword.value = '';
+                passwordMatchArea.textContent ='';
+                userNameTakenArea.textContent = '';
                 document.getElementById('admin-code-input').value = '';
                 createSignInBtn.textContent = "Create an account";
                 ui.hideElement(newAccountForm);
