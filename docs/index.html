@@ -31,27 +31,27 @@
         <div id="new-account" class="hidden">
             <div class='horizontal-center'>
                 <form class="col">
-                    
-                        <div class="horizontal-center">
-                            <div class="row" >
-                                <input type="radio" name='account-type' id="new-student-radio" value='student'>
-                                <label for="student">Student</label>
-                            </div>
-                            <div class="row">
-                                <input type="radio" name='account-type' id="new-admin-radio" value='admin'>
-                                <label for="admin">Admin</label>
-                            </div>    
 
+                    <div class="horizontal-center">
+                        <div class="row">
+                            <input type="radio" name='account-type' id="new-student-radio" value='student'>
+                            <label for="student">Student</label>
                         </div>
-                        
-                    
+                        <div class="row">
+                            <input type="radio" name='account-type' id="new-admin-radio" value='admin'>
+                            <label for="admin">Admin</label>
+                        </div>
+
+                    </div>
+
+
                     <div id="admin-code-area" class='hidden'>
                         <div class="col">
                             <label for="admin-code">Admin code:</label>
                             <input type="password" id="admin-code-input">
-        
+
                         </div>
-                       
+
                     </div>
                     <div class='col'>
                         <label for="username-init">Username:</label>
@@ -74,11 +74,11 @@
                     <div class='horizontal-center'>
                         <input type="submit" class="submit-button">
                     </div>
-                    
+
                 </form>
 
             </div>
-            
+
 
         </div>
         <div id="existing-account">
@@ -98,10 +98,10 @@
                 </form>
 
             </div>
-            
+
 
         </div>
-        
+
     </section>
     <section id='main'>
         <div id="character" class='hidden'>
@@ -113,33 +113,41 @@
     </section>
     <!-- ACTIVITIES -->
     <!-- ADMIN -->
-    <div id="upload-list" /*class='hidden'*/>
-        <div id="choose-file-div">
-            <input type="file" name="file" id="vocab-file">
-            <button id="upload-button">Upload this list!</button>
+    <div id="upload-list-display" class='hidden'>
+        <div id="upload-list" >
+            <div id="choose-file-div">
+                <input type="file" name="file" id="vocab-file">
+                <button id="upload-button">Upload this list!</button>
+            </div>
+    
+            <div id="display-list" class="hidden">
+                <table id='list-table'>
+                    <tr>
+                        <th>Term:</th>
+                        <th>Definition:</th>
+                    </tr>
+                </table>
+            </div>
         </div>
 
-        <div id="display-list" class="hidden">
-            <table id='list-table'>
-                <tr>
-                    <th>Term:</th>
-                    <th>Definition:</th>
-                </tr>
-            </table>
-        </div>
     </div>
+    
     <!-- STUDENT -->
-    <div id="flashcard-area" /*class="hidden" * />
-    <h3>Study with Flashcards!</h3>
-    <button id="start-flashcards">Get New Flash Cards</button>
-    <p>Click the term flashcard to reveal the definition</p>
-    <div id="flashcard-display">
-        <div id="term-display" class="flashcard"></div>
-        <div id="definition-display" class="flashcard">
-            <p id="definition-display-text" class="hidden"></p>
+    <div id="flashcard-big-div" class="hidden">
+        <div id="flashcard-area">
+            <h3>Study with Flashcards!</h3>
+            <button id="start-flashcards">Get New Flash Cards</button>
+            <p>Click the term flashcard to reveal the definition</p>
+            <div id="flashcard-display">
+                <div id="term-display" class="flashcard"></div>
+                <div id="definition-display" class="flashcard">
+                    <p id="definition-display-text" class="hidden"></p>
+                </div>
+            </div>
         </div>
+
     </div>
-    </div>
+
 
 
     <!-- SCRIPTS -->
