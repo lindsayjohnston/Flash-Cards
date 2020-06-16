@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Flash Cards</title>
+    <title>FlashApp Flashcards</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
     </nav>
     <section id='sign-in'>
         <header id="header">
-            <h2>Sign in to start Flashcards</h2>
+            <h2>Sign in to start FlashyApp Flashcards</h2>
             <button id="create-or-sign-in">Create an account</button>
         </header>
         <div id="new-account" class="hidden">
@@ -113,15 +113,18 @@
                 <input type="file" name="file" id="vocab-file">
                 <button id="upload-button" class='disabled'>Upload new list!</button>
             </div>
-    
-            <div id="display-list" class="hidden">
-                <table id='list-table'>
-                    <tr>
-                        <th>Term:</th>
-                        <th>Definition:</th>
-                    </tr>
-                </table>
+            <div class="horizontal-center">
+                <div id="display-list" class="hidden">
+                    <table id='list-table'  >
+                        <tr>
+                            <th class="term">Term:</th>
+                            <th class="definition">Definition:</th>
+                        </tr>
+                    </table>
+                </div>
+
             </div>
+            
         </div>
 
     </div>
@@ -138,7 +141,7 @@
                     <p id="definition-display-text" class="hidden"></p>
                 </div>
             </div>
-            <p>Click the term flashcard to reveal the definition.</p>
+            <h3>Click the term flashcard to reveal the definition.</h3>
         </div>
 
     </div>
@@ -146,6 +149,17 @@
 <!-- ALERT SECTION -->
 </section>
 <section id='main'>
+<div id="test-version-info">
+        <h3>Test out FlashyApp</h3>
+        <div>
+            <p><a href="Javascript-terms.csv" download>Download the test CSV file.</a></p>
+            <p>You can try out the uploader on the admin dashboard. </p>
+            <p>Admin code: snorlax </p>
+            
+
+        </div>
+        
+</div>
     <!-- SCRIPTS -->
     <script src="papaparse.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

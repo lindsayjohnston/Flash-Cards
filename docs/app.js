@@ -153,7 +153,7 @@ function uploadList() {
             }
         })
         ui.showElement(listTable);
-        ui.showAlert("List uploaded successfully", "success");
+        ui.showAlert("List uploaded successfully.", "success");
         uploadButton.classList.add('disabled');
     
 }
@@ -207,7 +207,7 @@ function signOut() {
         userTypeDisplayArea.textContent = '';
         ui.showElement(signInHeader);
         ui.showElement(signInForm);
-        ui.showAlert("You have signed out", "success");
+        ui.showAlert("You have signed out.", "success");
         ui.hideElement(uploadListDiv);
         ui.hideElement(flashCardArea);
     }
@@ -236,7 +236,7 @@ function signInUser(event) {
                 ui.showAlert("Incorrect password", 'fail');
             }
         } else {
-            ui.showAlert("Username does not exist", 'fail');
+            ui.showAlert("Username does not exist.", 'fail');
         }
     }
     userName.value = '';
@@ -284,7 +284,7 @@ function checkPassword() {
         passwordMatchArea.textContent = "Passwords match.";
         return (true);
     } else {
-        passwordMatchArea.textContent = "Passwords don't Match.";
+        passwordMatchArea.textContent = "Passwords don't match.";
         return (false);
     }
 }
@@ -309,7 +309,7 @@ function addNewUser(event) {
         userType = 'admin';
     }
     if (newUserName.value === '' || newPassword.value === '' || checkedPassword.value === '' || (!adminRadio.checked && !studentRadio.checked)) {
-        ui.showAlert('Enter all fields', 'fail');
+        ui.showAlert('Enter all fields.', 'fail');
     } else {
         if (adminRadio.checked && !checkAdminCode()) {
             ui.showAlert('Incorrect admin code', "fail");
@@ -325,7 +325,7 @@ function addNewUser(event) {
                 document.getElementById('admin-code-input').value = '';
                 createSignInBtn.textContent = "Create an account";
                 ui.hideElement(newAccountForm);
-                ui.showAlert('New User Created!', "success");
+                ui.showAlert('New user created!', "success");
                 ui.showElement(signInForm);
             }
         }
