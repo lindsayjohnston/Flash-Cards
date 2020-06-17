@@ -15,7 +15,7 @@
 body{
     background-color: var(--primary-color);
     margin: 0;
-    min-width: 800px;
+    min-width: 600px;
 }
 div{
     border-radius: 5px;   
@@ -94,7 +94,7 @@ label{
 }
 
 .alert{
-    margin-top: 30px;
+    margin: 30px 0px;
     color: black;
 }
 /* NAV BAR */
@@ -190,7 +190,10 @@ h2{
      align-items: center;
      justify-content: center;
  }
-
+ #upload-list-display{
+     min-height: 500px;
+     margin: 20px;
+ }
  
 
  table{
@@ -223,6 +226,9 @@ h2{
 
  
  /* STUDENT DASHBOARD */
+ #flashcard-big-div{
+     min-height: 500px ;
+ }
  #flashcard-area{
      display: flex;
      flex-direction: column;

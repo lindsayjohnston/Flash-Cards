@@ -151,11 +151,13 @@ function uploadList() {
     
         Papa.parse(listFileObject.files[0], {
             complete: function (results) {
-                results.data.forEach(function (array, index){
-                    if(array[0] === ''){
-                        results.data.splice(index, 1);
+                for(let i=0; i <results.data.length; i++){
+                    if(results.data[i][0] === ''){
+                        results.data.splice(i, 1);
+                        i=i -1;
                     }
-                })
+                }
+                console.log(results.data);
                 localStorage.setItem('list-Object', JSON.stringify(results.data));
                 displayList(results.data);
             }
