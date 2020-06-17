@@ -120,11 +120,16 @@ function displayStudentDashboard() {
 
 function getNewFlashCards(){
     let listObject= JSON.parse(localStorage.getItem('list-Object'));
-    let randomIndex= getRandomInt(listObject.length);
-    termDisplayArea.textContent= listObject[randomIndex][0];
-    definitionDisplayText.textContent='';
-    $("#definition-display-text").fadeOut("slow");
-    currentDefinition=listObject[randomIndex][1];
+    if(listObject === null){
+        ui.showAlert("An admin must upload a list of terms first!", "fail");
+    } else{
+        let randomIndex= getRandomInt(listObject.length);
+        termDisplayArea.textContent= listObject[randomIndex][0];
+        definitionDisplayText.textContent='';
+        $("#definition-display-text").fadeOut("slow");
+        currentDefinition=listObject[randomIndex][1];
+    }
+    
 }
 
 function getRandomInt(arrayLength){

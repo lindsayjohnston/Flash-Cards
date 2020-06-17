@@ -50,7 +50,26 @@ label{
     padding:0 5px;
     display: flex;
     align-items: center;
+}
 
+footer{
+    position: fixed;
+    bottom: 0;
+    background-color: var(--light-color);
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 5px;
+}
+
+footer p, a{
+    min-width: 200px;
+    
+}
+
+footer a{
+    background-color: white;
 }
 
 /* UTILITY CLASSES */
