@@ -114,7 +114,7 @@ nav div p{
     margin: 0px 5px 0px 0px;
 }
 
-#sign-out{
+.button-cursor{
     cursor: pointer;
 }
 
@@ -199,10 +199,7 @@ h2{
      margin: auto;
      
  }
- /* tbody> tr> .definition{
-     border: solid;
-     min-width: ;
- } */
+ 
 
  th{
      font-weight: unset;
@@ -273,11 +270,29 @@ h2{
  }
 
  /* TEST INFO */
+#main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
  #test-version-info{
-     color: white;
- }
+     color: var(--dark-color);
+     background-color: var(--light-color);
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     width: 500px;
+     
 
+ }
+ #test-heading{
+     color: var(--dark-color);
+     margin: 0;
+ }
  a{
      text-decoration: none;
      color: var(--dark-color);

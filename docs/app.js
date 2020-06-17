@@ -71,6 +71,8 @@ const definitionDisplayText=document.getElementById('definition-display-text');
 let currentDefinition;
 const termFlashCard= document.getElementById('term-display');
 const vocabFileButton=document.getElementById('vocab-file');
+const testVersionBtn= document.getElementById('test-version-info');
+const testInfo=document.getElementById('test-me-text');
 
 //EVENT LISTENERS
 createSignInBtn.addEventListener('click', newUserOrSignIn);
@@ -85,9 +87,15 @@ uploadButton.addEventListener('click', uploadList);
 getFlashCardsButton.addEventListener('click', getNewFlashCards);
 termFlashCard.addEventListener('click' , revealDefinition);
 vocabFileButton.addEventListener('change', revealUploadButton);
+testVersionBtn.addEventListener('click', testInfoDisplay);
 //FUNCTIONS
 
 ///DASHBOARDS
+function testInfoDisplay(){
+   
+    $('#test-me-text').slideDown().delay(10000).slideUp();
+    
+}
 function displayUserDashboard(userObject) {
     ui.hideElement(signInHeader);
     ui.navDisplay(userObject);

@@ -20,7 +20,7 @@
             <p id='current-user-display'></p>
         </div>
         <div>
-            <p id="sign-out">Sign Out</p>
+            <p id="sign-out" class="button-cursor">Sign Out</p>
         </div>
     </nav>
     <section id='sign-in'>
@@ -102,12 +102,12 @@
 
         </div>
 
-  
+
     </section>
     <!-- ACTIVITIES -->
     <!-- ADMIN -->
     <div id="upload-list-display" class='hidden'>
-        <div id="upload-list" >
+        <div id="upload-list">
             <div id="choose-file-div">
                 <h3>Choose a CSV file of terms and definitions to upload for your students:</h3>
                 <input type="file" name="file" id="vocab-file">
@@ -115,7 +115,7 @@
             </div>
             <div class="horizontal-center">
                 <div id="display-list" class="hidden">
-                    <table id='list-table'  >
+                    <table id='list-table'>
                         <tr>
                             <th class="term">Term:</th>
                             <th class="definition">Definition:</th>
@@ -124,17 +124,17 @@
                 </div>
 
             </div>
-            
+
         </div>
 
     </div>
-    
+
     <!-- STUDENT -->
     <div id="flashcard-big-div" class="hidden">
         <div id="flashcard-area">
             <h3>Study with Flashcards!</h3>
             <button id="start-flashcards">Get New Flashcard</button>
-            
+
             <div id="flashcard-display">
                 <div id="term-display" class="flashcard"></div>
                 <div id="definition-display" class="flashcard">
@@ -146,20 +146,21 @@
 
     </div>
 
-<!-- ALERT SECTION -->
-</section>
-<section id='main'>
-<div id="test-version-info">
-        <h3>Test out FlashyApp</h3>
-        <div>
-            <p><a href="Javascript-terms.csv" download>Download the test CSV file.</a></p>
-            <p>You can try out the uploader on the admin dashboard. </p>
-            <p>Admin code: snorlax </p>
-            
+    <!-- ALERT SECTION -->
+
+    <section id='main'>
+        <div id="test-version-info" class="button-cursor">
+            <h3 id="test-heading" >Test out FlashyApp</h3>
+            <div id="test-me-text" class="hidden">
+                <br>
+                <p><a href="Javascript-terms.csv" download>Download the test CSV file.</a></p>
+                <br>
+                <p>You will need an admin account to upload the CSV file of terms. To create an admin user account, use the code below...</p>
+                <p>Admin code: snorlax </p>
+            </div>
 
         </div>
-        
-</div>
+    </section>
     <!-- SCRIPTS -->
     <script src="papaparse.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
