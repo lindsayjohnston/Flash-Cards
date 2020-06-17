@@ -1,0 +1,16 @@
+,
+,
+isFinite(),function determines whether the passed value is a finite number.
+isNaN(),function determines whether a value is NaN or not
+parseFloat(),parses an argument (converting it to a string first if needed) and returns a floating point number
+parseInt(),function parses a string argument and returns an integer of the specified radix (the base in mathematical numeral systems)
+,
+.length ,returns the length of a string
+indexOf() ,method returns the index of (the position of) the first occurrence of a specified text in a string
+lastIndexOf(),method returns the index of the last occurrence of a specified text in a string
+search(),method searches a string for a specified value and returns the position of the match
+slice(),extracts a part of a string and returns the extracted part in a new string
+replace(),method replaces a specified value with another value in a string
+toString(),converts an array to a string of (comma separated) array values
+join() ,method also joins all array elements into a string
+unshift() ,"method adds a new element to an array (at the beginning), and ""unshifts"" older elements"
