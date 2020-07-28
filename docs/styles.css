@@ -16,6 +16,7 @@ body{
     background-color: var(--primary-color);
     margin: 0;
     min-width: 600px;
+    margin-bottom: 300px;
 }
 div{
     border-radius: 5px;   
@@ -59,7 +60,7 @@ footer{
     display: flex;
     flex-direction: row;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 10px 5px;
 }
 
@@ -70,7 +71,9 @@ footer p, a{
 
 footer a{
     background-color: white;
+    padding: 0px;
 }
+
 
 /* UTILITY CLASSES */
 .disabled{
@@ -122,6 +125,7 @@ nav{
     padding: 5px;
     background-color: var(--light-color);
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
 }
 nav div{ 
@@ -187,6 +191,7 @@ h2{
     width: fit-content;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 #vocab-file{
     width: 200px;
@@ -271,6 +276,9 @@ h2{
     margin: 20px;
  } 
  
+ #flashcard-area>h3{
+     text-align: center;
+ }
 
  #term-display{
      position: absolute;
@@ -325,3 +333,86 @@ h2{
      padding: 0px 5px;
      border-radius: 5px;
  }
+
+ #test-me-text p{
+     margin: 5px;
+ }
+
+ @media only screen and (max-width: 800px){
+     body{
+         min-width: 400px;
+         width: 100%;
+     }
+
+     #sign-in{
+         height: fit-content;
+     }
+    footer{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #main{
+        margin-bottom: 20px;
+    }
+
+    nav{
+        font-size: 2vw;
+        width: 100%;
+        min-width: 400px;
+    }
+
+    #list-table{
+        width: 100%;
+        font-size: 3vw;
+    }
+
+ }
+
+ @media only screen and (max-width: 500px){
+    body{
+        width: 100%;
+        min-width: 0px;
+    }
+
+    nav{
+        width: 100%;
+        min-width: 0px;
+    }
+    #sign-in{
+        height: fit-content;
+    }
+   footer{
+       flex-direction: column;
+       text-align: center;
+   }
+
+   #main{
+       margin-bottom: 20px;
+   }
+
+   #list-table{
+       width: 100%;
+       font-size: 3vw;
+   }
+
+   #flashcard-display{
+       width: 90%;
+   }
+
+   .flashcard{
+       width: 100px; 
+       font-size: 12px;
+   }
+
+    #flashcard-display, #definition-display, #term-display{
+       position: static;
+   }
+
+   #flashcard-display{
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+   }  
+
+}
